@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    table.table
+        each val, index in users
+            tr
+                td= val.userId
+                td= val.userName
+                td= val.userRole
+                td= val.userClass
+
+    
