@@ -1,0 +1,28 @@
+extends ../layout
+
+block content   
+    div.user-form-wrapper
+        h1.text-center Registration Form
+        form#user-form
+            div.form-control
+                label(for="username") Name
+                input(type="name" placeholder="Enter Name" id="username")
+                div.error Please enter name.
+            div.form-control
+                label User Type
+                select#usertype(name="usertype")
+                    option(value="") Select Type
+                    option(value="student") Student
+                    option(value="teacher") Teacher
+                div.error Please select type.
+            div.form-control
+                label User Class
+                select#userclass(name="class")
+                    option(value="") Select Class
+                    option(value="ma") MA
+                    option(value="ms") MS
+                    option(value="ba") BA
+                    option(value="bs") BS
+                div.error Please select class.
+            div.form-control.text-right
+                button.register(type="button" onclick="submitForm()") Register           

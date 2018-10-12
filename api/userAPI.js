@@ -1,4 +1,4 @@
-var db_obj = require('../dbconfig');
+var db_obj = require('../db.config');
 
 
 var userAPI = {

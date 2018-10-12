@@ -18,7 +18,7 @@ router.get('/', function(req, res){
 })
 
 .get('/user', function(req,res) {
-    res.status(404).render('users/user',{ message: 'User not found'});
+    res.status(200).render('users/register');
 })
 
 .get('/user/:id', timeLog, function(req, res) { 
@@ -38,6 +38,19 @@ router.get('/', function(req, res){
   res.render('users/user', {user: user[0]});
 })
 
+.get('/edit/:id', function(req, res) { 
+  const requestId = req.params.id;
+
+  let user = userData.filter(user => {
+    return user.userId == requestId;
+  });
+
+  if(!user.length) {
+    res.status(404).render('users/user',{ message: 'User not found'});
+  }
+  res.render('users/edit', {user: user[0]});
+})
+
 .post('/user', function(req, res){
     const newUser = {
       "userId": userData.length +  1,
@@ -48,7 +61,7 @@ router.get('/', function(req, res){
 
     userData.push(newUser);
 
-    res.status(200).json({message:`${newUser.userId} Added successfully`});
+    res.status(200).json({message:`Registered successfully`});
 })
 
 .put('/user/:id', function(req, res) {
@@ -68,6 +81,8 @@ router.get('/', function(req, res){
 
   userData[index] = user;
 
+  console.log(req.params.id);
+
   res.status(200).json({message:`${user.userId} Updated successfully`});  
 })
 
@@ -83,7 +98,7 @@ router.get('/', function(req, res){
     userData.splice(index, 1);
 
     res.status(200).json({message: `${user.userId} Deleted successfully`});
-})
+});
 
 
 

@@ -2,11 +2,23 @@ extends ../layout
 
 block content
     table.table
-        each val, index in users
-            tr
-                td= val.userId
-                td= val.userName
-                td= val.userRole
-                td= val.userClass
+        tr
+            th ID
+            th NAME
+            th ROLE
+            th CLASS    
+            th EDIT    
+            th DELETE
+            each val, index in users
+                tr
+                    td= val.userId
+                    td
+                        a(href='user/' + val.userId)= val.userName
+                    td= val.userRole
+                    td= val.userClass
+                    td
+                        a(href='edit/' + val.userId class='edit-btn') Edit
+                    td  
+                        a(href='#' onclick=`deleteUser(${val.userId})` class='delete-btn') Delete
 
     
